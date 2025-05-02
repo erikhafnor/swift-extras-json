@@ -58,11 +58,9 @@ extension JSONError {
             ))
 
         case .numberWithLeadingZero(let index):
-            return DecodingError.dataCorrupted(.init(
-                codingPath: [],
-                debugDescription: "Number with leading zeros at \(index)",
-                underlyingError: self
-            ))
+            return NSError(domain: "ExtrasJSONError", code: 1, userInfo: [
+                NSLocalizedDescriptionKey: "Number with leading zeros at \(index)"
+            ])
         }
     }
 }
